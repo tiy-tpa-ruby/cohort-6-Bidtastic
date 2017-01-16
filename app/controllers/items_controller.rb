@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate!, except: [:index, :show]
   # GET /items
   def index
     @items = Item.all
