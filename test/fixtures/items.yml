@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  photo_id: MyString
+  min_bid: 1
+  bid_increment: 1
+  final_bid: 1
+  category: MyString
+  user: one
+
+two:
+  name: MyString
+  description: MyText
+  photo_id: MyString
+  min_bid: 1
+  bid_increment: 1
+  final_bid: 1
+  category: MyString
+  user: two
