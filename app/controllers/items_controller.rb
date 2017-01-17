@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate!, except: [:index, :show]
   # GET /items
   def index
-    @items = Item.all
+    @items = Item.all.order("created_at DESC").where("category like ?", "%#{params[:search]}%")
   end
 
   # GET /items/1
