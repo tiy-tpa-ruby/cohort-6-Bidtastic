@@ -30,6 +30,9 @@
           %td= item.category
           %td= item.user
           %td
+            - item.pictures.each do |picture|
+              = image_tag attachment_url(picture, :image), size: "200x200"
+          %td
             = link_to item do
               %span.glyphicon.glyphicon-ok
           %td
