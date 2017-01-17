@@ -26,7 +26,7 @@
             %span.icon-bar
             %span.icon-bar
           = link_to root_path, class: "navbar-brand" do
-            Bidtastic
+            Bidtastic!  
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li.active
@@ -37,6 +37,13 @@
               .form-group
                 %input.form-control.searchable-items{placeholder: "Search", type: "text"}/
               %button.btn.btn-default.searchable-button{type: "submit"} Submit
+            %li
+              - if logged_in?
+                = link_to logout_path do
+                  %span.signout
+                  Sign out
+              - else
+                = link_to "Sign in", login_path
 
     .container
       - flash.each do |name, msg|
