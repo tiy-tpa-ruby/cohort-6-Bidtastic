@@ -2,6 +2,8 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = Event.all
+    @favorites = Favorite.all
+    @items = Item.all
   end
 
   # GET /events/1
