@@ -7,11 +7,18 @@
   -#   Edit
 
   .col-sm-12.show_img
-    = image_tag attachment_url(@item, :photo), class: "show_img"
-  %h5.current_bid CURRENT BID:
-  %h1.bid_number
-    %span.dollar $
-    = @item.final_bid
+    = image_tag attachment_url(@item, :photo)
+
+  .container.details
+    %h5.current_bid CURRENT BID:
+    .col-lg-4.col-md-4.col-sm-12
+      %h1.bidding
+        %span.dollar $
+        = @item.final_bid
+        = link_to "#", class: 'btn btn-default bid_button' do
+          BID NOW
+
+
   %h1= @item.name
 %dl.dl-horizontal
   %dt Description:
