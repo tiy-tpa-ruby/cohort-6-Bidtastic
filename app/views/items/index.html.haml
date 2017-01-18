@@ -10,6 +10,12 @@
             .col-md-6.col-xs-6
               .item-basic-info
                 = item.name
+                - if item.favorites.where(user_id: current_user.id).empty?
+                  = link_to favorite_event_item_path(@event, item) do
+                    %span.glyphicon.glyphicon-star-empty
+                - else
+                  = link_to favorite_event_item_path(@event, item) do
+                    %span.glyphicon.glyphicon-star
             .col-md-6.col-xs-6
               .item-final-bid
                 $

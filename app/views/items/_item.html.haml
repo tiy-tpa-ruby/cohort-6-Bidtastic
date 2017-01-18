@@ -23,10 +23,10 @@
       %span.glyphicon.glyphicon-remove
   %td
     - if item.favorites.where(user_id: current_user.id).empty?
-      = link_to favorite_item_path(item) do
+      = link_to favorite_event_item_path(@event, item) do
         %span.glyphicon.glyphicon-star-empty
     - else
-      = link_to favorite_item_path(item) do
+      = link_to favorite_event_item_path(@event, item) do
         %span.glyphicon.glyphicon-star
 %tr
   = item.id
@@ -35,7 +35,7 @@
     = @highest_bid.bid_amount
   - else
     = item.min_bid
-  = form_tag(bid_item_path(item)) do
+  = form_tag(bid_event_item_path(@event, item)) do
     .input-group
       %span.input-group-addon $
       %input.form-control{"aria-label" => "Amount (to the nearest dollar)", :type => "text", :name => "bid_amount"}/

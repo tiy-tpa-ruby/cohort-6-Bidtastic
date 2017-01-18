@@ -29,8 +29,9 @@
             Bidtastic!
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li
-              = link_to "New Item", new_item_path
+            - if @event
+              %li
+                = link_to "New Item", new_event_item_path(@event)
             %li
               = link_to "Events", events_path
           -# Search Bar
