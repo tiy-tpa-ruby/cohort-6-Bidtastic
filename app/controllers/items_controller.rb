@@ -1,8 +1,16 @@
 class ItemsController < ApplicationController
-  before_action :authenticate!, except: [:index, :show]
+
   # GET /items
   def index
-    @items = Item.all.order("created_at DESC").where("category like ?", "%#{params[:search]}%")
+    if params[:category].present?
+      @items = Item.all.order("created_at DESC").where(category: params[:category])
+    elsif params[:search].present?
+      @items = Item.all.order("created_at DESC").where("category like ?", "%#{params[:search]}%")
+    elsif params[:min_bid].present?
+      @items = Item.all.order("min_bid DESC")
+    else
+      @items = Item.all
+    end
   end
 
   # GET /items/1
