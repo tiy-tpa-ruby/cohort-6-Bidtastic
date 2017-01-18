@@ -1,10 +1,26 @@
 /* iPhone 5 (portrait)----------- */
-// @media only screen
-//   and (min-device-width: 320px)
-//   and (max-device-height: 568px)
-//   and (orientation: portrait) {
-//
-// }
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-height: 568px)
+  and (orientation: portrait) {
+  .item-basic-info {
+    font-size: 9px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .item-final-bid {
+    font-size: 9px;
+    font-weight: bold;
+    color: #d9534f;
+    margin-right: -10px;
+    font-family: 'Sansita One', cursive;
+  }
+
+  .item-image {
+    width: 120px;
+    height: 120px;
+  }
+}
 
 /* iPhone 6 (portrait)----------- */
 @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) {
@@ -42,11 +58,26 @@
 }
 
 /* iPads (portrait and landscape) ----------- */
-// @media only screen
-//   and (min-device-width: 768px)
-//   and (max-device-width: 1024px) {
-//
-// }
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px) {
+  .item-basic-info {
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .item-final-bid {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d9534f;
+    font-family: 'Sansita One', cursive;
+  }
+
+  .item-image {
+    width: 310px;
+    height: 310px;
+  }
+}
 
 /* Desktops and laptops ----------- */
 @media only screen
@@ -62,6 +93,11 @@
     color: #d9534f;
     margin-right: -10px;
     font-family: 'Sansita One', cursive;
+  }
+
+  .item-image {
+    width: 400px;
+    height: 400px;
   }
 }
 
