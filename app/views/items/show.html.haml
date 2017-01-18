@@ -1,35 +1,46 @@
-.page-header
-  - item = @item
-  .col-sm-12.show_img
-    = image_tag attachment_url(@item, :photo), class: "show_img"
-  %h5.current_bid
-    = item.id
-    - if !item.bids.empty?
-      - @highest_bid = item.bids.last
-      = @highest_bid.bid_amount
-    - else
-      = item.min_bid
-    = form_tag(bid_event_item_path(@event, item)) do
-      .input-group
-        %span.input-group-addon $
-        %input.form-control{"aria-label" => "Amount (to the nearest dollar)", :type => "text", :name => "bid_amount"}/
-        %span.input-group-addon .00
-        %span.input-group-btn
-          %button.btn.btn-default{:type => "submit"} Go!
-  %h1.bid_number
-    %span.dollar $
-    = @item.final_bid
-  %h1= @item.name
-%dl.dl-horizontal
-  %dt Description:
-  %dd= @item.description
-  %dt Min bid:
-  %dd= @item.min_bid
-  %dt Bid increment:
-  %dd= @item.bid_increment
-  %dt Current bid:
-  %dd= @item.final_bid
-  %dt Category:
-  %dd= @item.category
-  %dt User:
-  %dd= @item.user
+.page-header.show
+  -# = link_to items_path, class: 'btn btn-default' do
+  -#   %span.glyphicon.glyphicon-list-alt
+  -#   Back
+  -# = link_to edit_item_path(@item), class: 'btn btn-primary' do
+  -#   %span.glyphicon.glyphicon-pencil
+  -#   Edit
+.container
+  .col-lg-3.col-md3.col-sm-12
+    %h4.show_event
+      = @item.event.location
+    .show_img
+      = image_tag attachment_url(@item, :photo)
+
+    .container.details
+      %h4.current_bid CURRENT BID:
+      %h1.bidding
+        %span.dollar $
+        = @item.final_bid
+        = link_to "#", class: 'btn btn-default bid_button' do
+          BID NOW
+        = item.id
+        - if !item.bids.empty?
+          - @highest_bid = item.bids.last
+          = @highest_bid.bid_amount
+        - else
+          = item.min_bid
+        = form_tag(bid_event_item_path(@event, item)) do
+          .input-group
+            %span.input-group-addon $
+            %input.form-control{"aria-label" => "Amount (to the nearest dollar)", :type => "text", :name => "bid_amount"}/
+            %span.input-group-addon .00
+            %span.input-group-btn
+              %button.btn.btn-default{:type => "submit"} Go!
+
+        %h1.item_name
+          = @item.name
+        %ul
+          %li
+            %h3.category= @item.category
+          %li
+            %h5= @item.description
+        %h4.current_bid WINNIG BID:
+        %h2.bidding
+          %span.dollar $
+          = @item.min_bid
