@@ -5,7 +5,7 @@
         = link_to item do
           .img-thumbnail{:style => "border:none; background:white;"}
             .image-container
-            = image_tag attachment_url(item, :photo), class: "item-image"
+            = image_tag attachment_url(item, :photo), size: "120x120", class: "item-image"
           .row
             .col-md-6.col-xs-6
               .item-basic-info
