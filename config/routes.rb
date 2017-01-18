@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :events do
+    resources :items
+  end
   resources :events
   resources :items
   root "items#index"

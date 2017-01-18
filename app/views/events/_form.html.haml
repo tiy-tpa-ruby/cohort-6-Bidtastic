@@ -13,7 +13,7 @@
   .form-group
     = f.label :location, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_field :location, class: 'form-control'
+      = f.select :location, options_for_select(Event::LOCATIONS, @event.location ), class: 'form-control'
   .form-group
     = f.label :address, class: 'col-sm-2 control-label'
     .col-sm-10

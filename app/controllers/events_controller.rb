@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
   # GET /events
   def index
-    @events = Event.all
+    if params[:location].present?
+      @events = Event.where(location: params[:location])
+    else
+      @events = Event.all
+    end
   end
 
   # GET /events/1
