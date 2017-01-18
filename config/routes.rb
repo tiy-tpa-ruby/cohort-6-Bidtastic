@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   resources :events
-  resources :items
+  resources :items do
+    member do
+       get :favorite
+       post :bid
+    end
+  end
+
+
   root "items#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get  '/auth/:provider'          => 'omniauth#auth', as: :auth

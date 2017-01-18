@@ -22,4 +22,23 @@
     = link_to item, data: { confirm: 'Are you sure?' }, method: :delete do
       %span.glyphicon.glyphicon-remove
   %td
-    %span.glyphicon.glyphicon-star-empty
+    - if item.favorites.where(user_id: current_user.id).empty?
+      = link_to favorite_item_path(item) do
+        %span.glyphicon.glyphicon-star-empty
+    - else
+      = link_to favorite_item_path(item) do
+        %span.glyphicon.glyphicon-star
+%tr
+  = item.id
+  - if !item.bids.empty?
+    - @highest_bid = item.bids.last
+    = @highest_bid.bid_amount
+  - else
+    = item.min_bid
+  = form_tag(bid_item_path(item)) do
+    .input-group
+      %span.input-group-addon $
+      %input.form-control{"aria-label" => "Amount (to the nearest dollar)", :type => "text", :name => "bid_amount"}/
+      %span.input-group-addon .00
+      %span.input-group-btn
+        %button.btn.btn-default{:type => "submit"} Go!

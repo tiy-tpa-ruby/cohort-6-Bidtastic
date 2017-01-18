@@ -20,6 +20,43 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def favorite
+    @item = Item.find(params[:id])
+    if @item.favorites.where(favorite: true, user: current_user).count == 0
+      @item.favorites.create(favorite: true, user: current_user)
+    else
+      @item.favorites.where(user: current_user).destroy_all
+    end
+    redirect_to items_path
+  end
+
+  def bid
+    @item = Item.find(params[:id])
+
+    user_bid_amount = params[:bid_amount].to_i
+
+    if @item.bids.empty? && user_bid_amount >= @item.min_bid
+      @item.bids.create(bid_amount: user_bid_amount, user: current_user)
+    elsif @item.bids.empty? && user_bid_amount < @item.min_bid
+      redirect_to items_path, notice: "BID MORE!"
+      return
+    else
+      highest_bid = @item.bids.last
+      if user_bid_amount >= highest_bid.bid_amount + @item.bid_increment.to_i
+        @item.bids.create(bid_amount: user_bid_amount, user: current_user)
+      else
+        redirect_to items_path, notice: "Don't be cheap!"
+        return
+      end
+    end
+    # if @item.favorites.where(favorite: true, user: current_user).count == 0
+    #   @item.favorites.create(favorite: true, user: current_user)
+    # else
+    #   @item.favorites.where(user: current_user).destroy_all
+    # end
+    redirect_to items_path
+  end
+
   # POST /items
   def create
     @item = Item.new(item_params)

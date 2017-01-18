@@ -10,7 +10,7 @@
       %tr
         %th Location
         %th Address
-        %th{colspan: 4}
+        %th{colspan: 3}
 
     %tbody
       - @events.each do |event|
@@ -26,8 +26,3 @@
           %td
             = link_to event, data: { confirm: 'Are you sure?' }, method: :delete do
               %span.glyphicon.glyphicon-remove
-          %td
-            - if @favorites.item_id == @items
-              %span.glyphicon.glyphicon-star
-            - else
-              %span.glyphicon.glyphicon-star-empty
