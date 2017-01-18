@@ -1,5 +1,5 @@
-
-ruby '2.3.3'
+ruby '2.4.0'
+# ruby '2.3.3'
 
 source 'https://rubygems.org'
 
@@ -28,6 +28,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+
 
 # Authentication via oauth
 gem 'omniauth'
