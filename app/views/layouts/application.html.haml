@@ -7,7 +7,7 @@
     %meta{content: "", name: "description"}
     %meta{content: "", name: "author"}
     %title
-      = Bidtastic
+      Bidtastic!
 
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     /[if lt IE 9]
@@ -26,11 +26,27 @@
             %span.icon-bar
             %span.icon-bar
           = link_to root_path, class: "navbar-brand" do
-            Bidtastic
+            Bidtastic!
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li.active
-              = link_to "Add new item", new_item_path
+            %li
+              = link_to "New Item", new_item_path
+            %li
+              = link_to "Events", events_path
+          -# Search Bar
+          %ul.nav.navbar-nav.navbar-right
+            %form.navbar-form.navbar-left
+              .form-group
+                %input.form-control.searchable-items{placeholder: "Search", type: "text"}/
+              %button.btn.btn-default.searchable-button{type: "submit"} Submit
+            %li
+              - if logged_in?
+                = link_to logout_path do
+                  %span.signout
+                  Sign out
+              - else
+                = link_to "Sign in", login_path
+
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do

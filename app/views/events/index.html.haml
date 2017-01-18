@@ -1,0 +1,19 @@
+.page-header
+  -# = link_to new_event_path, class: 'btn btn-primary' do
+  -#   %span.glyphicon.glyphicon-plus
+  -#   New Event
+  %h1.text-body-logo.text-center Bidtasctic Events!
+
+.event-box
+  .row
+    .offset-md-3.col-md-6
+      = link_to root_path, class: "btn btn-info btn-block event-button" do
+        %span.event-button-text Chicago
+  .row
+    .offset-md-3.col-md-6
+      = link_to root_path, class: "btn btn-info btn-block event-button" do
+        %span.event-button-text Portland
+  .row
+    .offset-md-3.col-md-6
+      = link_to root_path, class: "btn btn-info btn-block event-button" do
+        %span.event-button-text Tampa
