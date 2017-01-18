@@ -1,0 +1,63 @@
+/* iPhone 5 (portrait)----------- */
+// @media only screen
+//   and (min-device-width: 320px)
+//   and (max-device-height: 568px)
+//   and (orientation: portrait) {
+//
+// }
+
+/* iPhone 6 (portrait)----------- */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) {
+  .item-basic-info {
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .item-final-bid {
+    font-size: 12px;
+    font-weight: bold;
+    color: #d9534f;
+    margin-right: -10px;
+    font-family: 'Sansita One', cursive;
+  }
+}
+
+/* iPhone 6+ (portrait) ----------- */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-height: 736px)
+  and (orientation: portrait) {
+  .item-basic-info {
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .item-final-bid {
+    font-size: 12px;
+    font-weight: bold;
+    color: #d9534f;
+    margin-right: -10px;
+    font-family: 'Sansita One', cursive;
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+// @media only screen
+//   and (min-device-width: 768px)
+//   and (max-device-width: 1024px) {
+//
+// }
+
+/* Desktops and laptops ----------- */
+// @media only screen
+//   and (min-width: 1224px) {
+//
+// }
+
+/* Samsung Galaxy S5 ----------- */
+// @media only screen
+//   and (min-device-width: 360px)
+//   and (max-device-height: 640px)
+//   and (orientation: portrait) {
+//
+// }
