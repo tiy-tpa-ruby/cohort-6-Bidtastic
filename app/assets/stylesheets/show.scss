@@ -1,7 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Oswald|Roboto|Crimson+Text');
+.page-header.show {
+  border: none;
+  margin: 0;
+}
 
-.details {
-  margin-top: 2%;
+.show_event {
+  text-align: right;
+  font-weight: bold;
+  color: #a8a8a8;
+
 }
 
 .dollar {
@@ -23,5 +30,10 @@
   font-family:'Open Sans', sans-serif;
   background-color: black;
   border-radius: 0;
-  width: 110px;
+  width: 100px;
+  top:3px;
+}
+
+.item_name, .category  {
+  font-family: 'Crimson Text', serif;
 }
