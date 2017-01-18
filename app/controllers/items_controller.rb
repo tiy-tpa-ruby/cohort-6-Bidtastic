@@ -2,30 +2,38 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
+    @event = Event.find(params[:event_id])
+
     if params[:category].present?
-      @items = Item.all.order("created_at DESC").where(category: params[:category])
+      @items = @event.items.order("created_at DESC").where(category: params[:category])
     elsif params[:search].present?
-      @items = Item.all.order("created_at DESC").where("category like ?", "%#{params[:search]}%")
+      @items = @event.items.order("created_at DESC").where("category like ?", "%#{params[:search]}%")
     elsif params[:min_bid].present?
-      @items = Item.all.order("min_bid DESC")
+      @items = @event.items.order("min_bid DESC")
     else
-      @items = Item.all
+      @items = @event.items
     end
   end
 
   # GET /items/1
   def show
-    @item = Item.find(params[:id])
+    @event = Event.find(params[:event_id])
+
+    @item = @event.items.find(params[:id])
   end
 
   # GET /items/new
   def new
-    @item = Item.new
+    @event = Event.find(params[:event_id])
+
+    @item = @event.items.new
   end
 
   # GET /items/1/edit
   def edit
-    @item = Item.find(params[:id])
+    @event = Event.find(params[:event_id])
+
+    @item = @event.items.find(params[:id])
   end
 
   def favorite
@@ -67,7 +75,9 @@ class ItemsController < ApplicationController
 
   # POST /items
   def create
-    @item = Item.new(item_params)
+    @event = Event.find(params[:event_id])
+
+    @item = @event.items.new(item_params)
 
     if @item.save
       redirect_to @item, notice: 'Item was successfully created.'
@@ -78,7 +88,9 @@ class ItemsController < ApplicationController
 
   # PATCH/PUT /items/1
   def update
-    @item = Item.find(params[:id])
+    @event = Event.find(params[:event_id])
+
+    @item = @event.items.find(params[:id])
     if @item.update(item_params)
       redirect_to @item, notice: 'Item was successfully updated.'
     else
@@ -88,7 +100,9 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1
   def destroy
-    @item = Item.find(params[:id])
+    @event = Event.find(params[:event_id])
+
+    @item = @event.items.find(params[:id])
     @item.destroy
     redirect_to items_url, notice: 'Item was successfully destroyed.'
   end
