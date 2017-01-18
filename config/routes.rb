@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  resources :users, only: [:edit, :update]
+
   resources :events do
     resources :items
   end
+
   resources :events
   resources :items
 

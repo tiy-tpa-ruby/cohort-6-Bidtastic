@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+  before_action :admin!, except: [:index, :show]
   # GET /items
   def index
     @event = Event.find(params[:event_id])

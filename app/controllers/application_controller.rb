@@ -20,4 +20,16 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def admin!
+    unless current_user_admin?
+      redirect_to root_path
+    end
+  end
+
+  # Verfity if current user is admin?
+  def current_user_admin?
+    current_user && current_user.admin?
+  end
+  helper_method :current_user_admin?
 end
