@@ -77,9 +77,9 @@ ActiveRecord::Schema.define(version: 20170118203333) do
     t.string   "uid"
     t.string   "nickname"
     t.string   "access_token"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.boolean  "admin"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "admin",        default: false
   end
 
   add_foreign_key "bids", "items"

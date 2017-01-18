@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+  before_action :admin!, except: [:index, :show]
   # GET /items
   def index
     if params[:category].present?

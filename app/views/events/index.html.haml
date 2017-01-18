@@ -1,7 +1,8 @@
 .page-header
-  -# = link_to new_event_path, class: 'btn btn-primary' do
-  -#   %span.glyphicon.glyphicon-plus
-  -#   New Event
+  - if current_user_admin?
+    = link_to new_event_path, class: 'btn btn-primary' do
+      %span.glyphicon.glyphicon-plus
+      New Event
   %h1.text-body-logo.text-center Bidtasctic Events!
 
 .event-box
