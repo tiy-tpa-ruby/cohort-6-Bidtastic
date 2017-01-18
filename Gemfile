@@ -1,4 +1,3 @@
-
 ruby '2.3.1'
 
 source 'https://rubygems.org'
@@ -32,6 +31,7 @@ gem 'turbolinks', '~> 5'
 # Authentication via oauth
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 # refile
 # File uploading

@@ -1,7 +1,6 @@
 class SessionController < ApplicationController
   # logging in
   def new
-    redirect_to auth_path(provider: 'twitter')
   end
 
   # handle the post from the login page
