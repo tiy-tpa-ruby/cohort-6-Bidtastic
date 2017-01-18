@@ -49,10 +49,21 @@
 // }
 
 /* Desktops and laptops ----------- */
-// @media only screen
-//   and (min-width: 1224px) {
-//
-// }
+@media only screen
+  and (min-width: 1224px) {
+  .item-basic-info {
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .item-final-bid {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d9534f;
+    margin-right: -10px;
+    font-family: 'Sansita One', cursive;
+  }
+}
 
 /* Samsung Galaxy S5 ----------- */
 // @media only screen

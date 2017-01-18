@@ -1,0 +1,16 @@
+.event-button {
+  margin-top: 7px;
+}
+
+.event-button-text {
+  font-size: 2em;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Desktops and laptops ----------- */
+@media only screen
+  and (min-width: 1224px) {
+  .event-box {
+    padding-left: 34%;
+  }
+}
