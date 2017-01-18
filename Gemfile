@@ -1,4 +1,10 @@
-ruby '2.3.3'
+<<<<<<< HEAD
+
+ruby '2.3.1'
+
+=======
+ruby '2.3.1'
+>>>>>>> 751e6325bc00e1dd89cc13923a7b846bf7a5dfaf
 
 source 'https://rubygems.org'
 
@@ -31,6 +37,7 @@ gem 'turbolinks', '~> 5'
 # Authentication via oauth
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 # refile
 # File uploading

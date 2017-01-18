@@ -3,7 +3,7 @@
 .social-box
   .row
     .offset-md-3.col-md-6
-      = link_to root_path, class: "btn btn-primary btn-block social-login-button" do
+      = link_to auth_path(provider: 'facebook'), class: "btn btn-primary btn-block social-login-button" do
         %i.fa.fa-facebook.social-login-icon{"aria-hidden" => "true"}
           %span.social-login-text Login with Facebook
   .row
