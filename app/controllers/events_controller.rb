@@ -1,7 +1,12 @@
 class EventsController < ApplicationController
+  before_action :admin!, except: [:index, :show]
   # GET /events
   def index
-    @events = Event.all
+    if params[:event_id].present?
+      @events = Event.where(event_id: params[:event_id])
+    else
+      @events = Event.all
+    end
   end
 
   # GET /events/1
