@@ -1,23 +1,32 @@
 .container-fluid.container-listings
   .form-group
-    = select_tag :min_bid, options_for_select(Item::PRICES, params[:min_bid] ), class: 'form-control'
-    %button.btn.btn-default{:type => "submit"} Search
-    = select_tag :category, options_for_select(Event::DESCRIPTIONS, params[:description] ), class: 'form-control'
-    %button.btn.btn-default{:type => "submit"} Search
-  .row
+    .col-md-6
+      = select_tag :min_bid, options_for_select(Item::PRICES, params[:min_bid] ), class: 'form-control', placeholder: 'Filter by Price'
+      %button.btn.btn-default{:type => "submit"} Search
+    .col-md-6
+      = select_tag :category, options_for_select(Event::DESCRIPTIONS, params[:description] ), class: 'form-control', placeholder: 'Filter by Category'
+      %button.btn.btn-default{:type => "submit"} Search
+  .row.item-listing
     - @items.each do |item|
-      .col-sm-6.col-md-6.col-xs-6
+      .col-sm-6.col-md-6.col-xs-6.img-cont
         = link_to [@event, item] do
-          .img-thumbnail{:style => "border:none; background:white;"}
+          .img-thumbnail{:style => "border:none;"}
             .image-container
             = image_tag attachment_url(item, :photo), size: "120x120", class: "item-image"
-          .row
-            .col-md-6.col-xs-6
-              .item-basic-info
-                = item.name
-            .col-md-6.col-xs-6
-              .item-final-bid
-                $
-                = item.final_bid
+            .row
+              .col-md-4.col-xs-4.star
+                - if item.favorites.where(user_id: current_user.id).empty?
+                  = link_to favorite_event_item_path(@event, item) do
+                    %span.glyphicon.glyphicon-star-empty
+                - else
+                  = link_to favorite_event_item_path(@event, item) do
+                    %span.glyphicon.glyphicon-star
+              .col-md-4.col-xs-4
+                .item-basic-info
+                  = item.name
+              .col-md-4.col-xs-4
+                .item-final-bid
+                  $
+                  = item.final_bid
 .pagnination_index
   =paginate @items

@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   PRICES = [
-    ["", 0],
+    ["Filter by Price", 0],
     ["$", 1],
     ["$$", 2],
     ["$$$", 3],
