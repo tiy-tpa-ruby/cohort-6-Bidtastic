@@ -1,23 +1,23 @@
 %tr
-  %td= item.event.location
-  %td= item.description
-  %td= item.min_bid
-  %td= item.bid_increment
-  %td= item.final_bid
+  -# %td= item.event.location
+  -# %td= item.description
+  -# %td= item.min_bid
+  -# %td= item.bid_increment
+  -# %td= item.final_bid
   %td= item.category
-  %td= item.user.name
-  %td
-    - if item.photo
-      = image_tag attachment_url(item, :photo), size: "200x200"
+  -# %td= item.user.name
+  -# %td
+  -#   - if item.photo
+  -#     = image_tag attachment_url(item, :photo), size: "120x120"
 
     -# - item.pictures.each do |picture|
     -#   = image_tag attachment_url(picture, :image), size: "200x200"
-  %td
-    = link_to item do
-      %span.glyphicon.glyphicon-ok
-  %td
-    = link_to edit_item_path(item) do
-      %span.glyphicon.glyphicon-pencil
-  %td
-    = link_to item, data: { confirm: 'Are you sure?' }, method: :delete do
-      %span.glyphicon.glyphicon-remove
+  -# %td
+  -#   = link_to item do
+  -#     %span.glyphicon.glyphicon-ok
+  -# %td
+  -#   = link_to edit_item_path(item) do
+  -#     %span.glyphicon.glyphicon-pencil
+  -# %td
+  -#   = link_to item, data: { confirm: 'Are you sure?' }, method: :delete do
+  -#     %span.glyphicon.glyphicon-remove

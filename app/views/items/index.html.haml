@@ -6,11 +6,18 @@
           .img-thumbnail{:style => "border:none; background:white;"}
             .image-container
             = image_tag attachment_url(item, :photo), size: "120x120", class: "item-image"
-          .row
-            .col-md-6.col-xs-6
-              .item-basic-info
-                = item.name
-            .col-md-6.col-xs-6
-              .item-final-bid
-                $
-                = item.final_bid
+      -# .row
+      -#   .search-results
+      -#     = render @items
+      .row
+        .col-md-6.col-xs-6
+          .item.search-results
+            = item.category
+      .row
+        .col-md-6.col-xs-6
+          .item-basic-info
+            = item.name
+        .col-md-6.col-xs-6
+          .item-final-bid
+            $
+            = item.final_bid
