@@ -49,6 +49,6 @@
   .form-group
     = f.label :min_bid, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.select :min_bid, options_for_select(Restaurant::PRICES, @item.min_bid ), class: 'form-control'
+      = f.select :min_bid, options_for_select(Item::PRICES, @item.min_bid ), class: 'form-control'
     .col-sm-offset-2.col-sm-10
       = f.submit class: 'btn btn-primary'
