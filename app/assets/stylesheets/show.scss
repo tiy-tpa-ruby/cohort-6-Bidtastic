@@ -4,11 +4,26 @@
   margin: 0;
 }
 
+.show_list {
+  text-align: right;
+}
+
+.show_img {
+  text-align: center;
+}
+.list_button {
+  color: white;
+  font-family:'Open Sans', sans-serif;
+  background-color: black;
+  border-radius: 0;
+  width: 80px;
+  top:3px;
+}
+
 .show_event {
   text-align: right;
   font-weight: bold;
   color: #a8a8a8;
-
 }
 
 .dollar {
