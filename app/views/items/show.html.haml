@@ -22,6 +22,11 @@
             = @highest_bid.bid_amount
           - else
             = item.min_bid
+      .container
+        .col-md-1.col-sm-2.col-xs-3
+          %h1
+            Bid:
+        .col-md-3.col-sm-6.col-xs-9.bidbox
           = form_tag(bid_event_item_path(@event, item)) do
             .input-group
               %span.input-group-addon $
