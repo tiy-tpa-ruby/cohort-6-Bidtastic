@@ -10,7 +10,7 @@
     %h4.show_event
       = @item.event.location
     .show_img
-      = image_tag attachment_url(@item, :photo)
+      = image_tag attachment_url(@item, :photo), size:'300x300'
 
     .container.details
       %h4.current_bid CURRENT BID:
