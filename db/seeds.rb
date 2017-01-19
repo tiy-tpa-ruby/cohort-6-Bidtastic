@@ -247,3 +247,13 @@ neil_diamond = Item.create!(
   final_bid: 1_450_000,
   photo: File.open(Rails.root.join("db/seeds/images/portland/neil_diamond.png"))
 )
+
+neil_diamond_2 = Item.create!(
+  user: fabuart,
+  category: "Tickets",
+  event: portland,
+  description: "Neil Diamond Tickets Portland OR Moda Center 7/28/17 FRONT ROW",
+  min_bid: 10,
+  bid_increment: 5,
+  photo: File.open(Rails.root.join("db/seeds/images/portland/neil_diamond.png"))
+)

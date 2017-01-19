@@ -7,10 +7,18 @@
             .image-container
             = image_tag attachment_url(item, :photo), size: "120x120", class: "item-image"
           .row
-            .col-md-6.col-xs-6
+            .col-md-4.col-xs-4
+              .favorite_item
+                - if item.favorites.where(user_id: current_user.id).empty?
+                  = link_to favorite_event_item_path(@event, item) do
+                    %span.glyphicon.glyphicon-star-empty
+                - else
+                  = link_to favorite_event_item_path(@event, item) do
+                    %span.glyphicon.glyphicon-star
+            .col-md-4.col-xs-4
               .item-basic-info
                 = item.name
-            .col-md-6.col-xs-6
+            .col-md-4.col-xs-4
               .item-final-bid
                 $
                 = item.final_bid

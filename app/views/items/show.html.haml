@@ -1,10 +1,5 @@
 .page-header.show
-  -# = link_to items_path, class: 'btn btn-default' do
-  -#   %span.glyphicon.glyphicon-list-alt
-  -#   Back
-  -# = link_to edit_item_path(@item), class: 'btn btn-primary' do
-  -#   %span.glyphicon.glyphicon-pencil
-  -#   Edit
+- item = @item
 .container
   .col-lg-3.col-md3.col-sm-12
     %h4.show_event
@@ -19,7 +14,19 @@
         = @item.final_bid
         = link_to "#", class: 'btn btn-default bid_button' do
           BID NOW
-
+        = item.id
+        - if !item.bids.empty?
+          - @highest_bid = item.bids.last
+          = @highest_bid.bid_amount
+        - else
+          = item.min_bid
+        = form_tag(bid_event_item_path(@event, item)) do
+          .input-group
+            %span.input-group-addon $
+            %input.form-control{"aria-label" => "Amount (to the nearest dollar)", :type => "text", :name => "bid_amount"}/
+            %span.input-group-addon .00
+            %span.input-group-btn
+              %button.btn.btn-default{:type => "submit"} Go!
 
         %h1.item_name
           = @item.name
