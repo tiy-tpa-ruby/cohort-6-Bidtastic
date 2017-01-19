@@ -1,17 +1,18 @@
 class ItemsController < ApplicationController
   before_action :admin!, except: [:index, :show, :favorite, :bid]
+
   # GET /items
   def index
     @event = Event.find(params[:event_id])
 
     if params[:category].present?
-      @items = @event.items.order("created_at DESC").where(category: params[:category])
+      @items = @event.items.order("created_at DESC").where(category: params[:category]).page(params[:page]).per(4)
     elsif params[:search].present?
-      @items = @event.items.order("created_at DESC").where("category like ?", "%#{params[:search]}%")
+      @items = @event.items.order("created_at DESC").where("category like ?", "%#{params[:search]}%").page(params[:page]).per(4)
     elsif params[:min_bid].present?
-      @items = @event.items.order("min_bid DESC")
+      @items = @event.items.order("min_bid DESC").page(params[:page]).per(4)
     else
-      @items = @event.items
+      @items = @event.items.page(params[:page]).per(4)
     end
   end
 
