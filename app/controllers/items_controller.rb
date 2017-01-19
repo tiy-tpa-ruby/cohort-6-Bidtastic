@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     @event = Event.find(params[:event_id])
 
     if params[:category].present?
-      @items = @event.items.where(category: params[:category])
+      @items = @event.items.where(category: params[:category]).page(params[:page]).per(4)
     elsif params[:search].present?
       @items = @event.items.order("created_at DESC").where("category like ?", "%#{params[:search]}%").page(params[:page]).per(4)
     elsif params[:min_bid].present?

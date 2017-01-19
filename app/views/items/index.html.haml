@@ -1,13 +1,11 @@
 .container-fluid.container-listings
-    = form_tag(event_items_path, method: "Get", class: 'form-control') do
+  = form_tag(event_items_path, method: "Get") do
     .form-group
-      Pricing
       = select_tag :min_bid, options_for_select(Item::PRICES, params[:min_bid] ), class: 'form-control'
-    = button_tag "Search", class: "btn btn-default"
+      = button_tag "Search", class: "btn btn-default"
     .form-group
-      Categories
       = select_tag :category, options_for_select(Event::DESCRIPTIONS, params[:description] ), class: 'form-control'
-    = button_tag "Search", class: "btn btn-default"
+      = button_tag "Search", class: "btn btn-default"
   .row.item-listing
     - @items.each do |item|
       .col-sm-6.col-md-6.col-xs-6.img-cont
@@ -23,7 +21,13 @@
                 - else
                   = link_to favorite_event_item_path(@event, item) do
                     %span.glyphicon.glyphicon-star
- 
-.pagnination_index
-  =paginate @items
+              .col-md-4.col-xs-4
+                .item-basic-info
+                  = item.name
+              .col-md-4.col-xs-4
+                .item-final-bid
+                $
+                = item.final_bid
 
+  .pagnination_index
+    = paginate @items
