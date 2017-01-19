@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :admin!, except: [:index, :show]
+  before_action :admin!, except: [:index, :show, :favorite, :bid]
   # GET /items
   def index
     @event = Event.find(params[:event_id])
@@ -36,6 +36,51 @@ class ItemsController < ApplicationController
     @item = @event.items.find(params[:id])
   end
 
+  def favorite
+    @event = Event.find(params[:event_id])
+
+    @item = @event.items.find(params[:id])
+    if @item.favorites.where(favorite: true, user: current_user).count == 0
+      @item.favorites.create(favorite: true, user: current_user)
+    else
+      @item.favorites.where(user: current_user).destroy_all
+    end
+    redirect_to event_items_path(@event)
+  end
+
+  def bid
+    @event = Event.find(params[:event_id])
+
+    @item = @event.items.find(params[:id])
+
+    user_bid_amount = params[:bid_amount].to_i
+
+    if @item.bids.empty? && user_bid_amount >= @item.min_bid
+      @item.bids.create(bid_amount: user_bid_amount, user: current_user)
+      redirect_to [@event, @item], notice: "First Bid!"
+      return
+    elsif @item.bids.empty? && user_bid_amount < @item.min_bid
+      redirect_to [@event, @item], notice: "BID MORE!"
+      return
+    else
+      highest_bid = @item.bids.last
+      if user_bid_amount >= highest_bid.bid_amount + @item.bid_increment.to_i
+        @item.bids.create(bid_amount: user_bid_amount, user: current_user)
+        redirect_to [@event, @item], notice: "You Bid!"
+        return
+      else
+        redirect_to [@event, @item], notice: "Don't be cheap!"
+        return
+      end
+    end
+    # if @item.favorites.where(favorite: true, user: current_user).count == 0
+    #   @item.favorites.create(favorite: true, user: current_user)
+    # else
+    #   @item.favorites.where(user: current_user).destroy_all
+    # end
+    redirect_to event_items_path(@event)
+  end
+
   # POST /items
   def create
     @event = Event.find(params[:event_id])
@@ -43,7 +88,7 @@ class ItemsController < ApplicationController
     @item = @event.items.new(item_params)
 
     if @item.save
-      redirect_to @item, notice: 'Item was successfully created.'
+      redirect_to [@event, @item], notice: 'Item was successfully created.'
     else
       render :new
     end
@@ -55,7 +100,7 @@ class ItemsController < ApplicationController
 
     @item = @event.items.find(params[:id])
     if @item.update(item_params)
-      redirect_to @item, notice: 'Item was successfully updated.'
+      redirect_to [@event, @item], notice: 'Item was successfully updated.'
     else
       render :edit
     end

@@ -2,11 +2,15 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
 
   resources :events do
-    resources :items
+    resources :items do
+      member do
+        get :favorite
+        post :bid
+      end
+    end
   end
 
   resources :events
-  resources :items
 
   root "events#index"
 
