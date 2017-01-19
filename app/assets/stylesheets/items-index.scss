@@ -105,6 +105,10 @@
   }
 }
 
+.bidbox {
+  padding-top: 22px;
+}
+
 /* Samsung Galaxy S5 ----------- */
 // @media only screen
 //   and (min-device-width: 360px)
@@ -112,3 +116,8 @@
 //   and (orientation: portrait) {
 //
 // }
+.pagnination_index {
+  margin-top: 10px;
+  text-align: center;
+  font-family: Oswald;
+}

@@ -1,4 +1,4 @@
-ruby '2.3.3'
+ruby '2.3.1'
 
 source 'https://rubygems.org'
 
@@ -44,6 +44,10 @@ gem "refile-postgres"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# pagination
+
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

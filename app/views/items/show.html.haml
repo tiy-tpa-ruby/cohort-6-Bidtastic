@@ -1,41 +1,48 @@
 .page-header.show
 - item = @item
 .container
-  .col-lg-3.col-md3.col-sm-12
-    %h4.show_event
-      = @item.event.location
-    .show_img
-      = image_tag attachment_url(@item, :photo), size:'300x300'
+  .row
+    .col-lg-3.col-md-3.col-sm-12
+      %h4.show_list
+        = link_to event_items_path, class: 'btn btn-default list_button' do
+          LIST
+      .show_img
+        = image_tag attachment_url(@item, :photo), size:'280x280'
 
-    .container.details
-      %h4.current_bid CURRENT BID:
-      %h1.bidding
-        %span.dollar $
-        = @item.final_bid
-        = link_to "#", class: 'btn btn-default bid_button' do
-          BID NOW
-        = item.id
-        - if !item.bids.empty?
-          - @highest_bid = item.bids.last
-          = @highest_bid.bid_amount
-        - else
-          = item.min_bid
-        = form_tag(bid_event_item_path(@event, item)) do
-          .input-group
-            %span.input-group-addon $
-            %input.form-control{"aria-label" => "Amount (to the nearest dollar)", :type => "text", :name => "bid_amount"}/
-            %span.input-group-addon .00
-            %span.input-group-btn
-              %button.btn.btn-default{:type => "submit"} Go!
-
-        %h1.item_name
-          = @item.name
-        %ul
-          %li
-            %h3.category= @item.category
-          %li
-            %h5= @item.description
-        %h4.current_bid WINNIG BID:
-        %h2.bidding
+      .container.details
+        %h4.current_bid CURRENT BID:
+        %h1.bidding
           %span.dollar $
-          = @item.min_bid
+          = @item.final_bid
+          = link_to "#", class: 'btn btn-default bid_button' do
+            BID NOW
+          = item.id
+          - if !item.bids.empty?
+            - @highest_bid = item.bids.last
+            = @highest_bid.bid_amount
+          - else
+            = item.min_bid
+      .container
+        .col-md-1.col-sm-2.col-xs-3
+          %h1
+            Bid:
+        .col-md-3.col-sm-6.col-xs-9.bidbox
+          = form_tag(bid_event_item_path(@event, item)) do
+            .input-group
+              %span.input-group-addon $
+              %input.form-control{"aria-label" => "Amount (to the nearest dollar)", :type => "text", :name => "bid_amount"}/
+              %span.input-group-addon .00
+              %span.input-group-btn
+                %button.btn.btn-default{:type => "submit"} Go!
+
+          %h1.item_name
+            = @item.name
+          %ul
+            %li
+              %h3.category= @item.category
+            %li
+              %h5= @item.description
+          %h4.current_bid WINNIG BID:
+          %h2.bidding
+            %span.dollar $
+            = @item.min_bid
