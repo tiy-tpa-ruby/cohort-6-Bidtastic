@@ -37,9 +37,9 @@
           -# Search Bar
           %ul.nav.navbar-nav.navbar-right
             %form.navbar-form.navbar-left
-              .form-group
-                %input.form-control.searchable-items{placeholder: "Search", type: "text"}/
-              %button.btn.btn-default.searchable-button{type: "submit"} Submit
+              -# .form-group
+              -#   %input.form-control.searchable-items{placeholder: "Search", type: "text"}/
+              -# %button.btn.btn-default.searchable-button{type: "submit"} Submit
             %li
               - if logged_in?
                 = link_to logout_path do
