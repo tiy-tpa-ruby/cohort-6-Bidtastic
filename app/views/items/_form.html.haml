@@ -1,4 +1,4 @@
-= form_for @item, html: { class: "form-horizontal", role: "form" } do |f|
+= form_for [@event, @item], html: { class: "form-horizontal", role: "form" } do |f|
   -if @item.errors.any?
     .alert.alert-danger.alert-dismissable{role: "alert"}
       %button.close{type: "button", data: {dismiss: "alert"} }
@@ -46,5 +46,9 @@
     = f.label :event_id, class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_area :event_id, class: 'form-control'
+  .form-group
+    = f.label :min_bid, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.select :min_bid, options_for_select(Restaurant::PRICES, @item.min_bid ), class: 'form-control'
     .col-sm-offset-2.col-sm-10
       = f.submit class: 'btn btn-primary'

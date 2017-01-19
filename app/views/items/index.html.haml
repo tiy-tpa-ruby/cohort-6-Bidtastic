@@ -1,4 +1,9 @@
 .container-fluid.container-listings
+  .form-group
+    = select_tag :min_bid, options_for_select(Item::PRICES, params[:min_bid] ), class: 'form-control'
+    %button.btn.btn-default{:type => "submit"} Search
+    = select_tag :category, options_for_select(Event::DESCRIPTIONS, params[:description] ), class: 'form-control'
+    %button.btn.btn-default{:type => "submit"} Search
   .row
     - @items.each do |item|
       .col-sm-6.col-md-6.col-xs-6
